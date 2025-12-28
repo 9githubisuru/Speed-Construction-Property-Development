@@ -44,7 +44,7 @@ const Hero = () => {
         <div className="flex flex-col justify-center">
           <h1
             ref={(el) => (textRef.current[0] = el)}
-            className="text-5xl lg:text-6xl font-bold leading-tight text-gray-900"
+            className="text-6xl lg:text-7xl font-bold leading-tight text-gray-900"
           >
             Innovate.
             <br />
@@ -66,18 +66,18 @@ const Hero = () => {
             ref={(el) => (textRef.current[2] = el)}
             className="mt-8 flex gap-4"
           >
-            <button className="px-6 py-3 rounded-md bg-sky-400 text-white font-medium hover:bg-sky-500 transition">
+            <button className="px-6 py-3 rounded-md bg-[#82d3ff] text-[#030c10] font-medium hover:bg-sky-500 transition">
               Homes
             </button>
-            <button className="px-6 py-3 rounded-md border border-gray-300 text-gray-800 hover:bg-gray-100 transition">
+            <button className="px-6 py-3 rounded-md border border-[#030c10] text-gray-800 hover:bg-gray-100 transition">
               Services
             </button>
           </div>
         </div>
 
         {/* RIGHT IMAGES */}
-        <div className="grid grid-cols-2 gap-6">
-          <div className="flex flex-col gap-6">
+        <div className="grid grid-cols-2 gap-4">
+          <div className="flex flex-col gap-4">
             <img
               ref={(el) => (imagesRef.current[0] = el)}
               src={construction}

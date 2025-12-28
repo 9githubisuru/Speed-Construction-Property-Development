@@ -1,11 +1,24 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import logo from "../assets/logo.jpeg";
 
 function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const overlayRef = useRef();
   const menuRef = useRef();
+  const buttonRef = useRef();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      setIsScrolled(scrollTop > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useGSAP(() => {
     if (isOpen) {
@@ -23,23 +36,55 @@ function NavBar() {
     }
   }, [isOpen]);
 
+  useGSAP(() => {
+    if (buttonRef.current) {
+      gsap.to(buttonRef.current, {
+        opacity: isScrolled ? 0.5 : 1,
+        duration: 0.3,
+        ease: "power2.out",
+      });
+    }
+  }, [isScrolled]);
+
+  useGSAP(() => {
+    if (buttonRef.current) {
+      const icon = buttonRef.current;
+      if (isOpen) {
+        gsap.to(icon, { rotation: 90, duration: 0.3, ease: "power2.out" });
+      } else {
+        gsap.to(icon, { rotation: 0, duration: 0.3, ease: "power2.out" });
+      }
+    }
+  }, [isOpen]);
+
   return (
     <>
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="fixed top-4 left-4 z-50 text-[#030c10] text-2xl bg-transparent border-none cursor-pointer"
-      >
-        ☰
-      </button>
+      <div className="flex flex-col  fixed top-0 left-0 w-full p-3 z-50 bg-white bg-opacity-90 backdrop-blur-sm">
+        <div className="flex items-center space-x-4">
+          <img src={logo} alt="Logo" className="w-12 h-12" />
+          <span className="text-1xl font-medium text-[#4f6168]">
+            Speed Construction & Property Development
+          </span>
+        </div>
+
+        <button
+          ref={buttonRef}
+          onClick={() => setIsOpen(!isOpen)}
+          className="fixed top-0 right-0 p-6 z-50 text-[#2c363a] text-2xl bg-transparent border-none cursor-pointer"
+        >
+          {isOpen ? "✕" : "☰"}
+        </button>
+      </div>
       <div
         ref={overlayRef}
-        className="fixed inset-0 bg-black bg-opacity-90 flex flex-col items-center justify-center z-40"
+        className="fixed inset-0 bg-white bg-opacity-90 flex flex-col items-left justify-center z-40 p-24"
       >
-        <ul ref={menuRef} className="text-white text-2xl space-y-4">
-          <li className="cursor-pointer hover:text-yellow-400">Home</li>
-          <li className="cursor-pointer hover:text-yellow-400">About</li>
-          <li className="cursor-pointer hover:text-yellow-400">Services</li>
-          <li className="cursor-pointer hover:text-yellow-400">Contact</li>
+        <ul ref={menuRef} className="text-[#030c10] text-7xl space-y-4 mt-20">
+          <li className="cursor-pointer hover:text-[#82d3ff]">Home</li>
+          <li className="cursor-pointer hover:text-[#82d3ff]">About</li>
+          <li className="cursor-pointer hover:text-[#82d3ff]">Services</li>
+          <li className="cursor-pointer hover:text-[#82d3ff]">Explore</li>
+          <li className="cursor-pointer hover:text-[#82d3ff]">Contact</li>
         </ul>
       </div>
     </>

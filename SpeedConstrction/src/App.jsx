@@ -3,6 +3,10 @@ import gsap from "gsap";
 import { ScrollTrigger, SplitText } from "gsap/all";
 import NavBar from "./components/navBar";
 import Hero from "./components/Hero";
+import CategorySection from "./components/CategorySection";
+import Introduction from "./components/Introduction";
+import CommonQuestions from "./components/CommonQuestions";
+import Bottom from "./components/Bottom";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -98,6 +102,10 @@ function App() {
         image2Ref={image2Ref}
         image3Ref={image3Ref}
       />
+      <CategorySection />
+      <Introduction />
+      <CommonQuestions />
+      <Bottom />
     </div>
   );
 }
