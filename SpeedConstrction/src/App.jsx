@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import { Routes, Route } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger, SplitText } from "gsap/all";
 import NavBar from "./components/navBar";
@@ -7,6 +8,9 @@ import CategorySection from "./components/CategorySection";
 import Introduction from "./components/Introduction";
 import CommonQuestions from "./components/CommonQuestions";
 import Bottom from "./components/Bottom";
+import HouseDesign from "./pages/HouseDesign";
+import Lands from "./pages/lands";
+import OnGoingProject from "./pages/OnGoingProject";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -94,19 +98,29 @@ function App() {
   }, []);
 
   return (
-    <div className="relative">
-      <NavBar />
-      <Hero
-        ref={heroRef}
-        image1Ref={image1Ref}
-        image2Ref={image2Ref}
-        image3Ref={image3Ref}
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <div className="relative">
+            <NavBar />
+            <Hero
+              ref={heroRef}
+              image1Ref={image1Ref}
+              image2Ref={image2Ref}
+              image3Ref={image3Ref}
+            />
+            <CategorySection />
+            <Introduction />
+            <CommonQuestions />
+            <Bottom />
+          </div>
+        }
       />
-      <CategorySection />
-      <Introduction />
-      <CommonQuestions />
-      <Bottom />
-    </div>
+      <Route path="/house-design" element={<HouseDesign />} />
+      <Route path="/lands" element={<Lands />} />
+      <Route path="/ongoing-projects" element={<OnGoingProject />} />
+    </Routes>
   );
 }
 

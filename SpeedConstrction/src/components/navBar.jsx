@@ -80,11 +80,21 @@ function NavBar() {
         className="fixed inset-0 bg-white bg-opacity-90 flex flex-col items-left justify-center z-40 p-24"
       >
         <ul ref={menuRef} className="text-[#030c10] text-7xl space-y-4 mt-20">
-          <li className="cursor-pointer hover:text-[#82d3ff]">Home</li>
-          <li className="cursor-pointer hover:text-[#82d3ff]">About</li>
-          <li className="cursor-pointer hover:text-[#82d3ff]">Services</li>
-          <li className="cursor-pointer hover:text-[#82d3ff]">Explore</li>
-          <li className="cursor-pointer hover:text-[#82d3ff]">Contact</li>
+          <a href="/">
+            <li className="cursor-pointer hover:text-[#82d3ff]">Home</li>
+          </a>
+          <a href="/about">
+            <li className="cursor-pointer hover:text-[#82d3ff]">About</li>
+          </a>
+          <a href="/services">
+            <li className="cursor-pointer hover:text-[#82d3ff]">Services</li>
+          </a>
+          <a href="/explore">
+            <li className="cursor-pointer hover:text-[#82d3ff]">Explore</li>
+          </a>
+          <a href="/contact">
+            <li className="cursor-pointer hover:text-[#82d3ff]">Contact</li>
+          </a>
         </ul>
       </div>
     </>

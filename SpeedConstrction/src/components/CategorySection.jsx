@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import gsap from "gsap";
 
-import houseImg from "../assets/house.jpg";
+import houseImg from "../assets/housedesign/img1.jpeg";
 import landImg from "../assets/lands.jpg";
 import serviceImg from "../assets/services.jpg";
 
@@ -25,18 +26,19 @@ const tabs = [
     image: landImg,
   },
   {
-    id: "services",
-    label: "Services",
+    id: "Ongoing Projects",
+    label: "Ongoing Projects",
     title: "End-to-end construction services",
     description:
       "From planning to completion, we offer professional construction and consultancy services.",
-    cta: "View our services",
+    cta: "View our works",
     image: serviceImg,
   },
 ];
 
 const CategorySection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const navigate = useNavigate();
 
   const tabsWrapperRef = useRef(null);
   const tabRefs = useRef([]);
@@ -87,6 +89,16 @@ const CategorySection = () => {
 
   const activeTab = tabs[activeIndex];
 
+  const handleClicked = () => {
+    if (activeTab.id === "house") {
+      navigate("/house-design");
+    } else if (activeTab.id === "lands") {
+      navigate("/lands");
+    } else if (activeTab.id === "Ongoing Projects") {
+      navigate("/ongoing-projects");
+    }
+  };
+
   return (
     <section className="min-h-screen bg-[#07141a] text-white px-6 lg:px-20 py-12">
       {/* Tabs */}
@@ -126,7 +138,10 @@ const CategorySection = () => {
               {activeTab.description}
             </p>
 
-            <button className="mt-6 inline-flex items-center gap-2 text-sky-400 hover:gap-3 transition-all">
+            <button
+              onClick={handleClicked}
+              className="mt-6 inline-flex items-center gap-2 text-sky-400 hover:gap-3 transition-all"
+            >
               {activeTab.cta}
               <span>→</span>
             </button>
