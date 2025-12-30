@@ -37,7 +37,7 @@ const BottomCTA = () => {
               href="#"
               className="hover:text-white transition-colors duration-300"
             >
-              Dribbble
+              Home
             </a>
             <a
               href="#"
@@ -50,6 +50,12 @@ const BottomCTA = () => {
               className="hover:text-white transition-colors duration-300"
             >
               LinkedIn
+            </a>
+            <a
+              href="#"
+              className="hover:text-white transition-colors duration-300"
+            >
+              Contact Us
             </a>
           </div>
         </div>

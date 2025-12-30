@@ -83,14 +83,18 @@ function NavBar() {
           <a href="/">
             <li className="cursor-pointer hover:text-[#82d3ff]">Home</li>
           </a>
-          <a href="/about">
-            <li className="cursor-pointer hover:text-[#82d3ff]">About</li>
+          <a href="/house-designs">
+            <li className="cursor-pointer hover:text-[#82d3ff]">
+              House Designs
+            </li>
           </a>
           <a href="/services">
-            <li className="cursor-pointer hover:text-[#82d3ff]">Services</li>
+            <li className="cursor-pointer hover:text-[#82d3ff]">Lands</li>
           </a>
           <a href="/explore">
-            <li className="cursor-pointer hover:text-[#82d3ff]">Explore</li>
+            <li className="cursor-pointer hover:text-[#82d3ff]">
+              Ongoing Projects
+            </li>
           </a>
           <a href="/contact">
             <li className="cursor-pointer hover:text-[#82d3ff]">Contact</li>

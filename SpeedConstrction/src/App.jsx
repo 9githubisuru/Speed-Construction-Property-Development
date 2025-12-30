@@ -11,6 +11,7 @@ import Bottom from "./components/Bottom";
 import HouseDesign from "./pages/HouseDesign";
 import Lands from "./pages/lands";
 import OnGoingProject from "./pages/OnGoingProject";
+import Carousel from "./components/Carousel";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -111,6 +112,7 @@ function App() {
               image3Ref={image3Ref}
             />
             <CategorySection />
+            <Carousel />
             <Introduction />
             <CommonQuestions />
             <Bottom />
